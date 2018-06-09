@@ -53,8 +53,9 @@ class Student
     SELECT * FROM students
     WHERE students.name = ?
     SQL
+    kid = DB[:conn].execute(sql, name)
     binding.pry
-    kid = Student.new_from_db(DB[:conn].execute(sql, name),[0])
+    Student.new_from_db(kid,[0])
   end
 
   def update
