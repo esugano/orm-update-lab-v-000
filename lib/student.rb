@@ -45,7 +45,7 @@ class Student
   end
 
   def self.new_from_db(row)
-    Student.new(row[1],row[2],row[0])[0]
+    Student.new(row[1],row[2],row[0])
   end
 
   def self.find_by_name(name)
@@ -54,8 +54,7 @@ class Student
     WHERE students.name = ?
     SQL
     kid = DB[:conn].execute(sql, name)
-    binding.pry
-    Student.new_from_db(kid,[0])
+    Student.new_from_db(kid[0])
   end
 
   def update
