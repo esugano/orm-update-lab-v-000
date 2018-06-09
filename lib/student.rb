@@ -45,6 +45,7 @@ class Student
   end
 
   def self.new_from_db(row)
+    binding.pry
     kid = Student.new(row[1],row[2],row[0])
   end
 
@@ -53,7 +54,7 @@ class Student
     SELECT * FROM students
     WHERE students.name = ?
     SQL
-        binding.pry
+    binding.pry
     kid = Student.new_from_db(DB[:conn].execute(sql, name),[0])
   end
 
